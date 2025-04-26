@@ -2,3 +2,18 @@
     background-color: rgb(54, 51, 51);
     color: azure;
 }
+
+.keypad {
+    display: flex;
+    justify-content: center;
+}
+
+.display {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}

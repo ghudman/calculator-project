@@ -31,3 +31,4 @@ function operate (firstNumber, operator, secondNumber){
 };
 
 const calcDisplay = document.querySelector(".display");
+const buttons = document.querySelector("keypad");
