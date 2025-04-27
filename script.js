@@ -47,18 +47,22 @@ numbers.addEventListener('click', function(buttonClick){
 //Operator and clearing of selection
 operatorButtons.addEventListener('click', function(op){
     if (op.target.tagName === 'BUTTON') {
-        if (operator !== '') {
-            operator = op.target.textContent;
+        
+        const previouslySelected = operatorButtons.querySelector('.selected-operator');
+        if (previouslySelected) {
+            previouslySelected.classList.remove('selected-operator');
         }
 
-        operator = op.target.textContent; //sets operator
+        op.target.classList.add('selected-operator');
 
-        if (Number.isInteger(firstNumber)) {
+        operator = op.target.textContent;
+
+        if (firstNumber !== '') {
             secondNumber = selectedNum.join("");
             selectedNum = [];
         } else {
-            firstNumber = selectedNum.join(""); //creates string from array for the first number
-            selectedNum = []; //clears the selection for next number
+            firstNumber = selectedNum.join("");
+            selectedNum = [];
         }
     }
 });
@@ -76,6 +80,12 @@ equalsButton.addEventListener('click', function(){
         var result = operate(firstNumber, operator, secondNumber);
 
         calcDisplay.textContent = result;
+        // Remove operator highlight after calculation
+        const selectedOp = operatorButtons.querySelector('.selected-operator');
+        if (selectedOp) {
+            selectedOp.classList.remove('selected-operator');
+        }
+
         selectedNum = [];
         firstNumber = result;
         secondNumber = '';
@@ -91,4 +101,9 @@ clearButton.addEventListener('click', function(){
     firstNumber = "";
     secondNumber = "";
     operator = "";
+    // Remove operator highlight after calculation
+    const selectedOp = operatorButtons.querySelector('.selected-operator');
+    if (selectedOp) {
+        selectedOp.classList.remove('selected-operator');
+    }
 });
