@@ -48,10 +48,14 @@ numbers.addEventListener('click', function(buttonClick){
 operatorButtons.addEventListener('click', function(op){
     if (op.target.tagName === 'BUTTON') {
         operator = op.target.textContent; //sets operator
-        firstNumber = selectedNum.join(""); //creates string from array for the first number
-        selectedNum = []; //clears the selection for next number
-        console.log(firstNumber);
-        console.log(selectedNum);
+
+        if (Number.isInteger(firstNumber)) {
+            secondNumber = selectedNum.join("");
+            selectedNum = [];
+        } else {
+            firstNumber = selectedNum.join(""); //creates string from array for the first number
+            selectedNum = []; //clears the selection for next number
+        }
     }
 });
 
@@ -73,12 +77,6 @@ equalsButton.addEventListener('click', function(){
         secondNumber = '';
         operator = '';
         result = '';
-        console.log(selectedNum);
-        console.log(firstNumber);
-        console.log(secondNumber);
-        console.log(operator);
-        console.log(result);
-        
     }
 });
 
