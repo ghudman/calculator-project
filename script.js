@@ -48,9 +48,9 @@ numbers.addEventListener('click', function(buttonClick){
 operatorButtons.addEventListener('click', function(op){
     if (op.target.tagName === 'BUTTON') {
         if (operator !== '') {
-            return;
+            operator = op.target.textContent;
         }
-        
+
         operator = op.target.textContent; //sets operator
 
         if (Number.isInteger(firstNumber)) {
